@@ -1,0 +1,126 @@
+<mvc:View
+    controllerName="com.nabi.project1.project1.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        id="empOverviewPage"
+        title="Employee Over View">
+
+        <!-- TOP TOOLBAR -->
+        <Toolbar id="empToolbar">
+
+            <SearchField
+                id="searchEmployee"
+                width="20rem"
+                placeholder="Search"
+                liveChange="onSearch"/>
+
+            <ToolbarSpacer id="toolbarSpacer"/>
+
+            <Button
+                id="btnCreate"
+                text="Create"
+                press="onCreate"/>
+
+            <Button
+                id="btnUpdate"
+                text="Update"
+                press="onUpdate"/>
+
+            <Button
+                id="btnExcel"
+                text="Excel"
+                icon="sap-icon://excel-attachment"
+                press="onExcel"/>
+
+        </Toolbar>
+
+        <!-- EMPLOYEE TABLE -->
+        <Table
+            id="empTable"
+            items="{/Employees}"
+            growing="true"
+            growingScrollToLoad="true">
+
+            <!-- COLUMNS -->
+            <columns>
+                <Column id="colSno">
+                    <Text id="txtSnoHdr" text="SNO"/>
+                </Column>
+
+                <Column id="colName">
+                    <Text id="txtNameHdr" text="NAME"/>
+                </Column>
+
+                <Column id="colRole">
+                    <Text id="txtRoleHdr" text="ROLE"/>
+                </Column>
+
+                <Column id="colSalary">
+                    <Text id="txtSalaryHdr" text="SALARY"/>
+                </Column>
+
+                <Column id="colPhone">
+                    <Text id="txtPhoneHdr" text="PHONE"/>
+                </Column>
+
+                <Column id="colEmail">
+                    <Text id="txtEmailHdr" text="EMAIL"/>
+                </Column>
+
+                <Column id="colAction">
+                    <Text id="txtActionHdr" text="ACTION"/>
+                </Column>
+            </columns>
+
+            <!-- ROW TEMPLATE -->
+            <items>
+                <ColumnListItem id="empRowItem">
+                    <cells>
+
+                        <!-- Employee ID -->
+                        <Text
+                            id="txtEmpId"
+                            text="{EmployeeID}"/>
+
+                        <!-- Employee Full Name (Expression Binding) -->
+                        <Text
+                            id="txtEmpName"
+                            text="{= ${FirstName} + ' ' + ${LastName} }"/>
+
+                        <!-- Role -->
+                        <Text
+                            id="txtEmpRole"
+                            text="{Title}"/>
+
+                        <!-- Salary (Static for now) -->
+                        <Text
+                            id="txtEmpSalary"
+                            text="80000000"/>
+
+                        <!-- Phone -->
+                        <Text
+                            id="txtEmpPhone"
+                            text="{HomePhone}"/>
+
+                        <!-- Email (Expression Binding) -->
+                        <Text
+                            id="txtEmpEmail"
+                            text="{= ${FirstName} + '.' + ${LastName} + '@company.com' }"/>
+
+                        <!-- Delete Button -->
+                        <Button
+                            id="btnDelete"
+                            text="Delete"
+                            type="Transparent"
+                            press="onDelete"/>
+
+                    </cells>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+
+    </Page>
+</mvc:View>
